@@ -1,5 +1,6 @@
 import connectDB from '@/lib/mongodb';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 
 interface Quartier {
   id: string;
@@ -146,9 +147,13 @@ export default async function QuartierPage({ params }: { params: { quartierId: s
           <h2 className="text-xl font-semibold mb-4">{category}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((service) => (
-              <div key={service.id} className="p-4 border rounded">
+              <Link 
+                key={service.id} 
+                href={`/${params.quartierId}/${service.id}`}
+                className="p-4 border rounded hover:bg-gray-50 transition-colors"
+              >
                 {service.name}
-              </div>
+              </Link>
             ))}
           </div>
         </div>

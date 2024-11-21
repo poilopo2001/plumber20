@@ -66,7 +66,7 @@ export default async function QuartiersPage() {
         {quartiers && quartiers.map((quartier) => (
           <Link 
             key={quartier.id}
-            href={`/quartiers/${quartier.id}`}
+            href={`/${quartier.id}`}
             className="p-4 border rounded hover:bg-gray-50"
           >
             {quartier.name}
