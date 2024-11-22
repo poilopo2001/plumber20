@@ -16,7 +16,7 @@ export default function EmergencyBanner() {
             </p>
           </div>
           <Link
-            href="tel:+352123456"
+            href="tel:+352661297770"
             className="rounded-md bg-red-800 px-4 py-1 text-sm font-medium hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-white"
           >
             Appeler Maintenant

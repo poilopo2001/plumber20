@@ -51,7 +51,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const ville of villes) {
       // Add ville/quartier page
       sitemapEntries.push({
-        url: `${baseUrl}/${ville.id}`,
+        url: `${baseUrl}/quartiers/${ville.id}`,
         lastModified: new Date(),
         changeFrequency: 'weekly',
         priority: ville.priority === 'high' ? 0.9 : 0.8,
@@ -63,7 +63,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         const lastMod = pageLastMods.get(pageKey) || new Date();
         
         sitemapEntries.push({
-          url: `${baseUrl}/${ville.id}/${service.id}`,
+          url: `${baseUrl}/quartiers/${ville.id}/${service.id}`,
           lastModified: lastMod,
           changeFrequency: service.emergency ? 'daily' : 'weekly',
           priority: service.priority === 'high' ? 0.9 : 0.8,
