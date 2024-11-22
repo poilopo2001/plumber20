@@ -29,7 +29,7 @@ export default function Home() {
                 Plombier Professionnel à Luxembourg-Ville
               </h1>
               <p className="text-xl mb-8 text-white">
-                Service d'urgence 24/7. Intervention rapide garantie sur Luxembourg-Ville et environs.
+                Service d&apos;urgence 24/7. Intervention rapide garantie sur Luxembourg-Ville et environs.
                 Devis gratuit immédiat.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
@@ -67,7 +67,7 @@ export default function Home() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-4 text-blue-900">Services d'Urgence 24/7</h2>
+            <h2 className="text-4xl font-bold mb-4 text-blue-900">Services d&apos;Urgence 24/7</h2>
             <p className="text-xl text-gray-700">Intervention rapide pour tous vos problèmes de plomberie</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -80,13 +80,13 @@ export default function Home() {
               },
               {
                 title: 'Réparation Fuite',
-                description: 'Détection et réparation de fuites d\'eau. Intervention rapide pour éviter les dégâts.',
+                description: 'Détection et réparation de fuites d&apos;eau. Intervention rapide pour éviter les dégâts.',
                 icon: '💧',
                 features: ['Fuite visible', 'Fuite cachée', 'Fuite canalisation']
               },
               {
                 title: 'Installation & Réparation',
-                description: 'Installation et réparation de tous types d\'équipements sanitaires.',
+                description: 'Installation et réparation de tous types d&apos;équipements sanitaires.',
                 icon: '🔧',
                 features: ['Chauffe-eau', 'Robinetterie', 'Sanitaires']
               }
@@ -115,17 +115,17 @@ export default function Home() {
             {[
               {
                 number: '30min',
-                text: 'Temps d\'intervention moyen',
+                text: 'Temps d&apos;intervention moyen',
                 icon: '⚡'
               },
               {
                 number: '24/7',
-                text: 'Service d\'urgence disponible',
+                text: 'Service d&apos;urgence disponible',
                 icon: '🕒'
               },
               {
                 number: '15+',
-                text: 'Années d\'expérience',
+                text: 'Années d&apos;expérience',
                 icon: '🏆'
               },
               {
@@ -155,7 +155,7 @@ export default function Home() {
             {quartiers.map((quartier, index) => (
               <Link 
                 key={index}
-                href={`/${quartier.toLowerCase()}`}
+                href={`/quartiers/${quartier.toLowerCase()}`}
                 className="p-4 text-center bg-blue-50 rounded-lg shadow hover:shadow-md transition-shadow duration-200 border-2 border-blue-100 text-blue-900 font-medium hover:bg-blue-100"
               >
                 {quartier}
@@ -176,7 +176,7 @@ export default function Home() {
             {[
               {
                 title: 'Expertise Professionnelle',
-                description: 'Équipe qualifiée avec plus de 15 ans d\'expérience en plomberie.',
+                description: 'Équipe qualifiée avec plus de 15 ans d&apos;expérience en plomberie.',
                 icon: '👨‍🔧'
               },
               {
@@ -203,7 +203,7 @@ export default function Home() {
       {/* CTA Section - Updated with better contrast */}
       <section className="bg-gradient-to-r from-blue-800 to-blue-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Besoin d'un Plombier en Urgence ?</h2>
+          <h2 className="text-4xl font-bold mb-6">Besoin d&apos;un Plombier en Urgence ?</h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto text-blue-100">
             Notre équipe de plombiers professionnels est disponible 24/7 pour résoudre tous vos problèmes de plomberie.
             Intervention rapide garantie sur Luxembourg-Ville.
