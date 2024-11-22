@@ -1,7 +1,14 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
+import Link from 'next/link';
 import connectDB from '@/lib/mongodb';
 import { generateContent, generateSEOMetadata } from '@/lib/openrouter';
 import { Content } from '@/models/Content';
+import ContactCTA from '@/components/ContactCTA';
+import ServiceHighlights from '@/components/ServiceHighlights';
+import TestimonialCard from '@/components/TestimonialCard';
+import EmergencyBanner from '@/components/EmergencyBanner';
+import LocalMap from '@/components/LocalMap';
 
 interface PageProps {
   params: {
@@ -129,13 +136,116 @@ export default async function ServicePage({ params }: PageProps) {
       );
     }
 
+    // Format the quartier name for display
+    const formattedQuartier = quartier.charAt(0).toUpperCase() + quartier.slice(1).replace(/-/g, ' ');
+    const formattedService = service.charAt(0).toUpperCase() + service.slice(1).replace(/-/g, ' ');
+
     return (
-      <div className="min-h-screen bg-gray-100 p-8">
-        <article className="max-w-3xl mx-auto bg-white rounded-lg shadow p-6">
-          <h1 className="text-3xl font-bold mb-6">{content.title}</h1>
-          <div className="prose prose-lg max-w-none"
-               dangerouslySetInnerHTML={{ __html: content.content }} />
-        </article>
+      <div className="min-h-screen bg-gray-50">
+        {/* Emergency Banner */}
+        <EmergencyBanner />
+
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Hero Section */}
+          <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-8 mb-12 text-white">
+            <div className="max-w-3xl">
+              <h1 className="text-4xl font-bold mb-4">
+                {content.title}
+              </h1>
+              <p className="text-xl mb-6 text-blue-100">
+                Service professionnel de plomberie à {formattedQuartier}, Luxembourg
+              </p>
+              <div className="flex gap-4">
+                <Link 
+                  href="/contact"
+                  className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+                >
+                  Devis Gratuit
+                </Link>
+                <Link 
+                  href="tel:+352123456"
+                  className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
+                >
+                  Appeler Maintenant
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+            {/* Main Content */}
+            <div className="lg:col-span-2">
+              <article className="bg-white rounded-xl shadow-sm p-8 mb-8">
+                <div className="prose prose-lg max-w-none"
+                     dangerouslySetInnerHTML={{ __html: content.content }} />
+              </article>
+
+              {/* Service Highlights */}
+              <ServiceHighlights service={formattedService} />
+
+              {/* Local Service Area */}
+              <div className="bg-white rounded-xl shadow-sm p-8 mb-8">
+                <h2 className="text-2xl font-bold mb-4">Zone de Service: {formattedQuartier}</h2>
+                <LocalMap quartier={quartier} />
+                <p className="mt-4 text-gray-600">
+                  Nous intervenons rapidement dans tout {formattedQuartier} et ses environs pour tous vos besoins en {formattedService.toLowerCase()}.
+                </p>
+              </div>
+
+              {/* Testimonials */}
+              <div className="bg-white rounded-xl shadow-sm p-8">
+                <h2 className="text-2xl font-bold mb-6">Avis Clients</h2>
+                <div className="grid gap-6">
+                  <TestimonialCard
+                    name="Jean Dupont"
+                    location={formattedQuartier}
+                    rating={5}
+                    text={`Excellent service de ${formattedService.toLowerCase()}. Rapide et professionnel.`}
+                  />
+                  <TestimonialCard
+                    name="Marie Martin"
+                    location={formattedQuartier}
+                    rating={5}
+                    text="Intervention rapide et travail de qualité. Je recommande!"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Sidebar */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-8">
+                {/* Contact CTA */}
+                <ContactCTA quartier={formattedQuartier} service={formattedService} />
+
+                {/* Why Choose Us */}
+                <div className="bg-white rounded-xl shadow-sm p-6 mt-8">
+                  <h3 className="text-xl font-bold mb-4">Pourquoi Nous Choisir?</h3>
+                  <ul className="space-y-4">
+                    <li className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>Intervention 24/7</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>Devis gratuit</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span>Garantie satisfaction</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     );
   } catch (error) {
