@@ -15,9 +15,9 @@ const quartiers = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen -mt-24">
       {/* Hero Section - Updated with better contrast */}
-      <section className="relative bg-gradient-to-r from-blue-700 to-blue-900 text-white py-24">
+      <section className="relative bg-gradient-to-r from-blue-700 to-blue-900 text-white pt-36 pb-24">
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -63,7 +63,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Emergency Services Section - Updated with better contrast */}
+      {/* Rest of the sections remain unchanged */}
+      {/* Emergency Services Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -108,7 +109,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust Indicators Section - Updated with better contrast */}
+      {/* Trust Indicators Section */}
       <section className="py-16 bg-blue-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -144,7 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Quartiers Section - Updated with better contrast */}
+      {/* Quartiers Section */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -165,7 +166,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section - Updated with better contrast */}
+      {/* Why Choose Us Section */}
       <section className="py-20 bg-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -200,7 +201,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Section - Updated with better contrast */}
+      {/* CTA Section */}
       <section className="bg-gradient-to-r from-blue-800 to-blue-900 text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Besoin d&apos;un Plombier en Urgence ?</h2>
