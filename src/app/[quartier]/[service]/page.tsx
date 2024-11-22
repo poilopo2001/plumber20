@@ -12,6 +12,7 @@ import ContactCTA from '@/components/ContactCTA';
 import ServiceHighlights from '@/components/ServiceHighlights';
 import TestimonialCard from '@/components/TestimonialCard';
 import LocalMap from '@/components/LocalMap';
+import connectDB from '@/lib/mongodb';
 
 interface PageProps {
   params: {
@@ -20,10 +21,51 @@ interface PageProps {
   };
 }
 
+// Force cache to be permanent
+export const dynamic = 'force-static';
+export const dynamicParams = true;
+
+async function getOrCreatePermanentContent(quartier: string, service: string) {
+  try {
+    await connectDB();
+    const db = (await import('mongoose')).connection.db;
+    const collection = db.collection('pageContent');
+
+    // Try to find existing content
+    const existingContent = await collection.findOne({
+      quartier,
+      service,
+    });
+
+    if (existingContent) {
+      console.log('Using cached content for:', quartier, service);
+      return existingContent.content;
+    }
+
+    // Generate new content only if it doesn't exist
+    console.log('Generating new content for:', quartier, service);
+    const newContent = await generatePageContent(quartier, service);
+
+    // Store the content permanently
+    await collection.insertOne({
+      quartier,
+      service,
+      content: newContent,
+      createdAt: new Date()
+    });
+
+    return newContent;
+  } catch (error) {
+    console.error('Cache error:', error);
+    // Fallback to direct generation if cache fails
+    return generatePageContent(quartier, service);
+  }
+}
+
 // Generate metadata for the page
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   try {
-    const content = await generatePageContent(params.quartier, params.service);
+    const content = await getOrCreatePermanentContent(params.quartier, params.service);
     return getMetadata({ metadata: content.metadata });
   } catch (error) {
     console.error('Error generating metadata:', error);
@@ -36,7 +78,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function ServicePage({ params }: PageProps) {
   try {
-    const content = await generatePageContent(params.quartier, params.service);
+    const content = await getOrCreatePermanentContent(params.quartier, params.service);
 
     // Format the quartier name for display
     const formattedQuartier = params.quartier.charAt(0).toUpperCase() + params.quartier.slice(1).replace(/-/g, ' ');
