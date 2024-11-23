@@ -1,8 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaPhoneAlt, FaArrowRight } from 'react-icons/fa';
+import { FaPhoneAlt, FaArrowRight, FaTools } from 'react-icons/fa';
 import Link from 'next/link';
 
 interface HeroProps {
@@ -24,12 +24,54 @@ const containerVariants = {
   }
 };
 
+const pulseVariants = {
+  initial: { scale: 1, opacity: 1 },
+  pulse: {
+    scale: [1, 1.05, 1],
+    opacity: [1, 0.8, 1],
+    transition: {
+      duration: 2,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }
+  }
+};
+
 export default function HeroSection({ hero }: HeroProps) {
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
+  
   if (!hero) return null;
 
   // Parse CTAs to separate text and link
   const [primaryText, primaryLink] = hero.primaryCTA.split('|');
   const [secondaryText, secondaryLink] = hero.secondaryCTA.split('|');
+
+  const handleQuickFixClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    // First attempt to find the section
+    const tryScroll = () => {
+      const quickFixSection = document.getElementById('quick-fix');
+      if (quickFixSection) {
+        const yOffset = -80; // Adjusted offset
+        const y = quickFixSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        return true;
+      }
+      return false;
+    };
+
+    // Try immediately
+    if (!tryScroll()) {
+      // If not found, try again after a short delay to allow lazy loading
+      setTimeout(() => {
+        if (!tryScroll()) {
+          // If still not found, try one last time with a longer delay
+          setTimeout(tryScroll, 500);
+        }
+      }, 100);
+    }
+  };
 
   return (
     <motion.div
@@ -102,6 +144,40 @@ export default function HeroSection({ hero }: HeroProps) {
               {secondaryText}
               <FaArrowRight className="h-5 w-5" />
             </Link>
+          </motion.div>
+
+          {/* Quick Fix Guide Link */}
+          <motion.div
+            className="mt-8 relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            onMouseEnter={() => setIsTooltipVisible(true)}
+            onMouseLeave={() => setIsTooltipVisible(false)}
+          >
+            <motion.div
+              initial="initial"
+              animate="pulse"
+              variants={pulseVariants}
+            >
+              <button 
+                onClick={handleQuickFixClick}
+                className="inline-flex items-center px-6 py-3 bg-yellow-400 bg-opacity-20 rounded-full text-yellow-300 hover:text-yellow-400 hover:bg-opacity-30 transition-all duration-300 cursor-pointer"
+              >
+                <FaTools className="mr-2 text-xl" />
+                <span className="text-lg font-medium">Guide de réparation rapide</span>
+              </button>
+            </motion.div>
+
+            {/* Tooltip */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: isTooltipVisible ? 1 : 0, y: isTooltipVisible ? 0 : 10 }}
+              className="absolute left-1/2 transform -translate-x-1/2 -bottom-16 bg-white text-gray-800 px-4 py-2 rounded-lg shadow-lg text-sm whitespace-nowrap"
+            >
+              Cliquez ici pour voir les solutions rapides 👇
+              <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white" />
+            </motion.div>
           </motion.div>
         </div>
       </div>
