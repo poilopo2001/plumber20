@@ -3,7 +3,6 @@ import Link from 'next/link';
 import connectDB from '@/lib/mongodb';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FloatingContact from '@/components/FloatingContact';
-import EmergencyBanner from '@/components/EmergencyBanner';
 
 interface Quartier {
   id: string;
@@ -73,9 +72,6 @@ export default async function QuartiersPage() {
   return (
     <>
       <div className="min-h-screen bg-gray-50">
-        {/* Emergency Banner */}
-        <EmergencyBanner />
-
         {/* Breadcrumbs */}
         <Breadcrumbs />
 

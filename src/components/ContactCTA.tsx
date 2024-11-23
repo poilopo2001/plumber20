@@ -38,7 +38,7 @@ export default function ContactCTA({ quartier, service }: ContactCTAProps) {
           Demander un Devis
         </Link>
         <Link
-          href="tel:+352123456"
+          href="tel:+352661297770"
           className="block w-full text-center bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
         >
           Appeler {quartier}

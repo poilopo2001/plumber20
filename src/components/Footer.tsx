@@ -5,16 +5,25 @@ import Link from 'next/link';
 const navigation = {
   main: [
     { name: 'Accueil', href: '/' },
-    { name: 'Services', href: '/services' },
     { name: 'À Propos', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ],
-  services: [
-    'Débouchage',
-    'Détection de fuite',
-    'Réparation chauffe-eau',
-    'Installation sanitaire',
-    'Dépannage urgent',
+  quartiers: [
+    { name: 'Beggen', href: '/quartiers/beggen' },
+    { name: 'Belair', href: '/quartiers/belair' },
+    { name: 'Bonnevoie', href: '/quartiers/bonnevoie' },
+    { name: 'Cents', href: '/quartiers/cents' },
+    { name: 'Cessange', href: '/quartiers/cessange' },
+    { name: 'Clausen', href: '/quartiers/clausen' },
+    { name: 'Gasperich', href: '/quartiers/gasperich' },
+    { name: 'Gare', href: '/quartiers/gare' },
+    { name: 'Grund', href: '/quartiers/grund' },
+    { name: 'Hollerich', href: '/quartiers/hollerich' },
+    { name: 'Kirchberg', href: '/quartiers/kirchberg' },
+    { name: 'Limpertsberg', href: '/quartiers/limpertsberg' },
+    { name: 'Merl', href: '/quartiers/merl' },
+    { name: 'Neudorf', href: '/quartiers/neudorf' },
+    { name: 'Pfaffenthal', href: '/quartiers/pfaffenthal' },
   ],
   social: [
     {
@@ -40,7 +49,8 @@ export default function Footer() {
         Footer
       </h2>
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+        <div className="xl:grid xl:grid-cols-4 xl:gap-8">
+          {/* Company Info */}
           <div className="space-y-8">
             <Link href="/" className="text-2xl font-bold text-white">
               PlombierPro
@@ -58,65 +68,73 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div className="md:grid md:grid-cols-2 md:gap-8">
-              <div>
-                <h3 className="text-sm font-semibold leading-6 text-white">Navigation</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.main.map((item) => (
-                    <li key={item.name}>
-                      <Link href={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
-                        {item.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h3 className="text-sm font-semibold leading-6 text-white">Services</h3>
-                <ul role="list" className="mt-6 space-y-4">
-                  {navigation.services.map((item) => (
-                    <li key={item}>
-                      <a href="#" className="text-sm leading-6 text-gray-300 hover:text-white">
-                        {item}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold leading-6 text-white">Contact</h3>
-              <ul role="list" className="mt-6 space-y-4">
-                <li className="flex">
-                  <div className="text-sm leading-6 text-gray-300">
-                    <strong className="text-white">Téléphone:</strong>
-                    <br />
-                    <a href="tel:+352123456" className="hover:text-white">
-                      +352 123 456
-                    </a>
-                  </div>
+
+          {/* Navigation */}
+          <div className="mt-16 xl:mt-0">
+            <h3 className="text-sm font-semibold leading-6 text-white">Navigation</h3>
+            <ul role="list" className="mt-6 space-y-4">
+              {navigation.main.map((item) => (
+                <li key={item.name}>
+                  <Link href={item.href} className="text-sm leading-6 text-gray-300 hover:text-white">
+                    {item.name}
+                  </Link>
                 </li>
-                <li className="flex">
-                  <div className="text-sm leading-6 text-gray-300">
-                    <strong className="text-white">Email:</strong>
-                    <br />
-                    <a href="mailto:contact@plombierpro.lu" className="hover:text-white">
-                      contact@plombierpro.lu
-                    </a>
-                  </div>
-                </li>
-                <li className="flex">
-                  <div className="text-sm leading-6 text-gray-300">
-                    <strong className="text-white">Adresse:</strong>
-                    <br />
-                    Luxembourg-Ville
-                  </div>
-                </li>
-              </ul>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div className="mt-16 xl:mt-0">
+            <h3 className="text-sm font-semibold leading-6 text-white">Contact</h3>
+            <ul role="list" className="mt-6 space-y-4">
+              <li className="flex">
+                <div className="text-sm leading-6 text-gray-300">
+                  <strong className="text-white">Téléphone:</strong>
+                  <br />
+                  <a href="tel:+352661297770" className="hover:text-white">
+                    +352 661 29 77 70
+                  </a>
+                </div>
+              </li>
+              <li className="flex">
+                <div className="text-sm leading-6 text-gray-300">
+                  <strong className="text-white">Email:</strong>
+                  <br />
+                  <a href="mailto:contact@plombierpro.lu" className="hover:text-white">
+                    contact@plombierpro.lu
+                  </a>
+                </div>
+              </li>
+              <li className="flex">
+                <div className="text-sm leading-6 text-gray-300">
+                  <strong className="text-white">Adresse:</strong>
+                  <br />
+                  38 Grand-Rue, 1660 Ville-Haute Luxembourg
+                  <br />
+                  Lux Grand-Rue Business Center
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          {/* Quartiers */}
+          <div className="mt-16 xl:mt-0">
+            <h3 className="text-sm font-semibold leading-6 text-white mb-6">Zones d'intervention</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {navigation.quartiers.map((item) => (
+                <Link 
+                  key={item.name}
+                  href={item.href}
+                  className="text-sm leading-6 text-gray-300 hover:text-white hover:underline"
+                >
+                  {item.name}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
+
+        {/* Copyright */}
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
           <p className="text-xs leading-5 text-gray-400">
             &copy; {new Date().getFullYear()} PlombierPro Luxembourg. Tous droits réservés.

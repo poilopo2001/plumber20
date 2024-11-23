@@ -7,7 +7,6 @@ import QuickFixSection from '@/components/QuickFixSection';
 import PageMetadata, { generateMetadata as getMetadata } from '@/components/PageMetadata';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FloatingContact from '@/components/FloatingContact';
-import EmergencyBanner from '@/components/EmergencyBanner';
 import ContactCTA from '@/components/ContactCTA';
 import ServiceHighlights from '@/components/ServiceHighlights';
 import TestimonialCard from '@/components/TestimonialCard';
@@ -28,8 +27,13 @@ export const dynamicParams = true;
 async function getOrCreatePermanentContent(quartier: string, service: string) {
   try {
     await connectDB();
-    const db = (await import('mongoose')).connection.db;
-    const collection = db.collection('pageContent');
+    const { connection } = await import('mongoose');
+    
+    if (!connection.db) {
+      throw new Error('Database connection not established');
+    }
+
+    const collection = connection.db.collection('pageContent');
 
     // Try to find existing content
     const existingContent = await collection.findOne({
@@ -88,9 +92,6 @@ export default async function ServicePage({ params }: PageProps) {
       <>
         <PageMetadata metadata={content.metadata} />
         <div className="min-h-screen bg-gray-50">
-          {/* Emergency Banner */}
-          <EmergencyBanner />
-
           {/* Breadcrumbs */}
           <Breadcrumbs />
 

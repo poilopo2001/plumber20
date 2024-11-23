@@ -1,0 +1,13 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Allow: /services/
+Allow: /contact
+Allow: /about
+Allow: /*/
+
+# Sitemaps
+Sitemap: https://plombierpro.lu/sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
