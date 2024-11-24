@@ -34,7 +34,7 @@ const Breadcrumbs = () => {
         "@type": "ListItem",
         "position": 1,
         "item": {
-          "@id": "https://plombierpro.lu",
+          "@id": "https://depannage-luxembourg.com",
           "name": "Accueil"
         }
       },
@@ -42,7 +42,7 @@ const Breadcrumbs = () => {
         "@type": "ListItem",
         "position": index + 2,
         "item": {
-          "@id": `https://plombierpro.lu${item.path}`,
+          "@id": `https://depannage-luxembourg.com${item.path}`,
           "name": item.label
         }
       }))

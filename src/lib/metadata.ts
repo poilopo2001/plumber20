@@ -10,7 +10,7 @@ export function generateDefaultMetadata(
   return {
     title: `${title} | ${siteName}`,
     description,
-    metadataBase: new URL(siteUrl || 'https://plombierpro.lu'),
+    metadataBase: new URL(siteUrl || 'https://depannage-luxembourg.com'),
     alternates: {
       canonical: '/',
     },

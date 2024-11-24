@@ -14,12 +14,12 @@ export const metadata = {
   keywords: ['plombier luxembourg', 'plomberie urgence', 'débouchage canalisation', 'dépannage plomberie', 'détection fuite', 'installation sanitaire'],
   robots: 'index, follow',
   alternates: {
-    canonical: 'https://plombierpro.lu'
+    canonical: 'https://depannage-luxembourg.com'
   },
   openGraph: {
     title: 'PlombierPro Luxembourg | Service de Plomberie 24/7',
     description: 'Service de plomberie professionnel à Luxembourg. Intervention d\'urgence 24/7, débouchage, détection de fuite, installation et réparation.',
-    url: 'https://plombierpro.lu',
+    url: 'https://depannage-luxembourg.com',
     siteName: 'PlombierPro Luxembourg',
     locale: 'fr_LU',
     type: 'website',

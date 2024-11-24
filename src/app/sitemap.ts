@@ -6,7 +6,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   await connectDB();
 
   const sitemapEntries: MetadataRoute.Sitemap = [];
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://plombierpro.lu';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://depannage-luxembourg.com';
 
   // Add static pages
   sitemapEntries.push(

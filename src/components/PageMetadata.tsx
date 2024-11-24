@@ -39,7 +39,7 @@ export function generateMetadata({ metadata }: PageMetadataProps): Metadata {
       'og:type': 'website',
     },
     alternates: {
-      canonical: `https://plombierpro.lu/${metadata.schema.areaServed.toLowerCase()}`,
+      canonical: `https://depannage-luxembourg.com/${metadata.schema.areaServed.toLowerCase()}`,
     },
   };
 }

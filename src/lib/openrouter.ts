@@ -2,7 +2,7 @@ import axios from 'axios';
 import { PageContent } from './pageContent';
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://plombierpro.lu';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://depannage-luxembourg.com';
 const SITE_NAME = 'PlombierPro';
 
 if (!OPENROUTER_API_KEY) {

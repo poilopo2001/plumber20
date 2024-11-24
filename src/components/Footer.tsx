@@ -100,8 +100,8 @@ export default function Footer() {
                 <div className="text-sm leading-6 text-gray-300">
                   <strong className="text-white">Email:</strong>
                   <br />
-                  <a href="mailto:contact@plombierpro.lu" className="hover:text-white">
-                    contact@plombierpro.lu
+                  <a href="mailto:contact@depannage-luxembourg.com" className="hover:text-white">
+                    contact@depannage-luxembourg.com
                   </a>
                 </div>
               </li>

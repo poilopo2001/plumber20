@@ -59,8 +59,8 @@ export default function Contact() {
                     </div>
                     <div className="ml-4">
                       <p className="font-semibold text-gray-900">Email</p>
-                      <a href="mailto:contact@plombierpro.lu" className="text-blue-600 hover:text-blue-500">
-                        contact@plombierpro.lu
+                      <a href="mailto:contact@depannage-luxembourg.com" className="text-blue-600 hover:text-blue-500">
+                        contact@depannage-luxembourg.com
                       </a>
                     </div>
                   </li>
@@ -177,7 +177,7 @@ export default function Contact() {
                 Nous intervenons dans tout Luxembourg-Ville et ses environs. Service d'urgence disponible 24/7.
               </p>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-                {[
+                {[/* eslint-disable-next-line */
                   'Beggen', 'Belair', 'Bonnevoie', 'Cents', 'Cessange',
                   'Clausen', 'Gasperich', 'Gare', 'Grund', 'Hollerich',
                   'Kirchberg', 'Limpertsberg', 'Merl', 'Neudorf', 'Pfaffenthal'
