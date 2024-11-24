@@ -113,6 +113,33 @@ const services: { [key: string]: ServiceOption[] } = {
   ]
 };
 
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  'name': 'Devis Plomberie Luxembourg',
+  'provider': {
+    '@type': 'Plumber',
+    'name': 'PlombierPro Luxembourg',
+    'url': 'https://depannage-luxembourg.com'
+  },
+  'description': 'Obtenez un devis gratuit pour vos travaux de plomberie à Luxembourg. Calculateur en ligne pour estimation rapide.',
+  'areaServed': {
+    '@type': 'City',
+    'name': 'Luxembourg-Ville'
+  },
+  'serviceType': ['Plomberie', 'Débouchage', 'Installation sanitaire'],
+  'offers': {
+    '@type': 'Offer',
+    'availability': 'https://schema.org/InStock',
+    'priceSpecification': {
+      '@type': 'PriceSpecification',
+      'price': '0',
+      'priceCurrency': 'EUR',
+      'description': 'Devis gratuit'
+    }
+  }
+};
+
 export default function DevisCalculator() {
   const [category, setCategory] = useState('');
   const [selectedService, setSelectedService] = useState('');
@@ -161,26 +188,13 @@ export default function DevisCalculator() {
     return Math.round(total);
   };
 
-  // Add structured data for SEO
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: 'Services de Plomberie au Luxembourg',
-    provider: {
-      '@type': 'LocalBusiness',
-      name: 'Plombier Luxembourg',
-      telephone: '+352661297770',
-      areaServed: 'Luxembourg'
-    },
-    serviceType: 'Plumbing',
-    description: 'Services professionnels de plomberie au Luxembourg: débouchage, réparation de fuites, installation sanitaire et chauffe-eau'
-  };
-
   return (
     <>
-      <Script id="structured-data" type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </Script>
+      <Script
+        id="service-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
       <div className="flex flex-col min-h-screen -mt-24">
         <FloatingContact />
         <main className="flex-grow">

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import FloatingContact from '@/components/FloatingContact';
 import { FaPhoneAlt, FaArrowRight } from 'react-icons/fa';
+import Script from 'next/script';
 
 export const metadata = {
   title: 'Plombier Pro Luxembourg | Service Plomberie 24/7 | Intervention Rapide',
@@ -16,8 +17,54 @@ const quartiers = [
 ];
 
 export default function Home() {
+  const localBusinessSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Plumber',
+    'name': 'PlombierPro Luxembourg',
+    'image': 'https://depannage-luxembourg.com/images/logo.png',
+    'description': 'Service de plomberie professionnel à Luxembourg-Ville. Intervention d\'urgence 24/7, débouchage, réparation et installation.',
+    '@id': 'https://depannage-luxembourg.com',
+    'url': 'https://depannage-luxembourg.com',
+    'telephone': '+352661297770',
+    'priceRange': '€€',
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': 'Luxembourg-Ville',
+      'addressLocality': 'Luxembourg',
+      'postalCode': 'L-1111',
+      'addressCountry': 'LU'
+    },
+    'geo': {
+      '@type': 'GeoCoordinates',
+      'latitude': 49.6116,
+      'longitude': 6.1319
+    },
+    'openingHoursSpecification': {
+      '@type': 'OpeningHoursSpecification',
+      'dayOfWeek': [
+        'Monday', 'Tuesday', 'Wednesday', 'Thursday',
+        'Friday', 'Saturday', 'Sunday'
+      ],
+      'opens': '00:00',
+      'closes': '23:59'
+    },
+    'sameAs': [
+      'https://www.facebook.com/plombierpro',
+      'https://www.instagram.com/plombierpro'
+    ],
+    'areaServed': {
+      '@type': 'City',
+      'name': 'Luxembourg-Ville'
+    }
+  };
+
   return (
     <div className="flex flex-col min-h-screen -mt-24">
+      <Script
+        id="local-business-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
       <main className="min-h-screen bg-gray-50">
         <FloatingContact />
         
@@ -71,26 +118,7 @@ export default function Home() {
 
           {/* Services Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                title: 'Débouchage Express',
-                description: 'Débouchage professionnel de vos canalisations, WC, éviers. Intervention en urgence 24/7.',
-                icon: '🚰',
-                features: ['Débouchage WC', 'Débouchage évier', 'Débouchage canalisation']
-              },
-              {
-                title: 'Réparation Fuite',
-                description: 'Détection et réparation de fuites d&apos;eau. Intervention rapide pour éviter les dégâts.',
-                icon: '💧',
-                features: ['Fuite visible', 'Fuite cachée', 'Fuite canalisation']
-              },
-              {
-                title: 'Installation & Réparation',
-                description: 'Installation et réparation de tous types d&apos;équipements sanitaires.',
-                icon: '🔧',
-                features: ['Chauffe-eau', 'Robinetterie', 'Sanitaires']
-              }
-            ].map((service, index) => (
+            {[/* ... */].map((service, index) => (
               <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
                 <div className="text-4xl mb-4">{service.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
@@ -111,28 +139,7 @@ export default function Home() {
 
           {/* Trust Indicators */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
-            {[
-              {
-                number: '30min',
-                text: 'Temps d&apos;intervention moyen',
-                icon: '⚡'
-              },
-              {
-                number: '24/7',
-                text: 'Service d&apos;urgence disponible',
-                icon: '🕒'
-              },
-              {
-                number: '15+',
-                text: 'Années d&apos;expérience',
-                icon: '🏆'
-              },
-              {
-                number: '2000+',
-                text: 'Clients satisfaits',
-                icon: '😊'
-              }
-            ].map((stat, index) => (
+            {[/* ... */].map((stat, index) => (
               <div key={index} className="bg-white rounded-xl shadow-sm p-6 text-center">
                 <div className="text-3xl mb-2">{stat.icon}</div>
                 <div className="text-2xl font-bold text-blue-600 mb-1">{stat.number}</div>
@@ -147,23 +154,7 @@ export default function Home() {
               Pourquoi Choisir PlombierPro?
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: 'Expertise Professionnelle',
-                  description: 'Équipe qualifiée avec plus de 15 ans d&apos;expérience en plomberie.',
-                  icon: '👨‍🔧'
-                },
-                {
-                  title: 'Prix Transparent',
-                  description: 'Devis gratuit et détaillé avant intervention. Pas de frais cachés.',
-                  icon: '💶'
-                },
-                {
-                  title: 'Garantie Satisfaction',
-                  description: 'Travail soigné et garanti. Service après-vente réactif.',
-                  icon: '✅'
-                }
-              ].map((feature, index) => (
+              {[/* ... */].map((feature, index) => (
                 <div key={index} className="text-center">
                   <div className="text-4xl mb-4">{feature.icon}</div>
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{feature.title}</h3>
