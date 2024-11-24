@@ -5,6 +5,7 @@ import Link from 'next/link';
 const navigation = {
   main: [
     { name: 'Accueil', href: '/' },
+    { name: 'Devis', href: '/devis' },
     { name: 'À Propos', href: '/about' },
     { name: 'Contact', href: '/contact' },
   ],
