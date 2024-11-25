@@ -7,20 +7,20 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: {
-    default: 'PlombierPro Luxembourg | Service de Plomberie 24/7',
-    template: '%s | PlombierPro Luxembourg'
+    default: 'Dépannage Plombier Luxembourg | Intervention en 30min 24/7',
+    template: '%s | Dépannage Plombier Luxembourg'
   },
-  description: 'Service de plomberie professionnel à Luxembourg. Intervention d\'urgence 24/7, débouchage, détection de fuite, installation et réparation. Devis gratuit.',
-  keywords: ['plombier luxembourg', 'plomberie urgence', 'débouchage canalisation', 'dépannage plomberie', 'détection fuite', 'installation sanitaire'],
+  description: 'Urgence plomberie Luxembourg - Intervention en 30 minutes, 24h/24 et 7j/7. Débouchage, fuite d\'eau, installation sanitaire. Une équipe de plombiers professionnels à votre service.',
+  keywords: ['plombier urgence luxembourg', 'dépannage plomberie 24/7', 'plombier 30 minutes', 'débouchage urgence', 'fuite eau luxembourg', 'plombier rapide', 'intervention plomberie urgente'],
   robots: 'index, follow',
   alternates: {
     canonical: 'https://depannage-luxembourg.com'
   },
   openGraph: {
-    title: 'PlombierPro Luxembourg | Service de Plomberie 24/7',
-    description: 'Service de plomberie professionnel à Luxembourg. Intervention d\'urgence 24/7, débouchage, détection de fuite, installation et réparation.',
+    title: 'Dépannage Plombier Luxembourg | Intervention en 30min 24/7',
+    description: 'Urgence plomberie Luxembourg - Intervention en 30 minutes, 24h/24 et 7j/7. Une équipe de plombiers professionnels à votre service.',
     url: 'https://depannage-luxembourg.com',
-    siteName: 'PlombierPro Luxembourg',
+    siteName: 'Dépannage Plombier Luxembourg',
     locale: 'fr_LU',
     type: 'website',
   }

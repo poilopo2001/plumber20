@@ -50,15 +50,14 @@ export default function Footer() {
         Footer
       </h2>
       <div className="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-        <div className="xl:grid xl:grid-cols-4 xl:gap-8">
-          {/* Company Info */}
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8">
-            <Link href="/" className="text-2xl font-bold text-white">
-              PlombierPro
-            </Link>
+            <div>
+              <span className="text-2xl font-bold text-white">Dépannage Plombier</span>
+              <p className="text-sm text-red-400 mt-2">Intervention en 30 minutes 24/7</p>
+            </div>
             <p className="text-sm leading-6 text-gray-300">
-              Service de plomberie professionnel 24/7 à Luxembourg.
-              Intervention rapide et efficace pour tous vos besoins en plomberie.
+              Service de plomberie d'urgence à Luxembourg. Intervention rapide et professionnelle 24h/24 et 7j/7.
             </p>
             <div className="flex space-x-6">
               {navigation.social.map((item) => (
@@ -138,7 +137,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
           <p className="text-xs leading-5 text-gray-400">
-            &copy; {new Date().getFullYear()} PlombierPro Luxembourg. Tous droits réservés.
+            &copy; {new Date().getFullYear()} Dépannage Plombier Luxembourg. Tous droits réservés.
           </p>
         </div>
       </div>
