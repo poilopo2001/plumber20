@@ -1,132 +1,179 @@
-# Roadmap: Plombier Pro Luxembourg Website
+SITEMAP REMAKE - État d'avancement
 
-## Phase 1: Project Setup & Configuration 
-- [x] Initialize Next.js project with TypeScript
-- [x] Configure environment variables (.env)
-  - MONGODB_URI
-  - OPENROUTER_API_KEY
-  - NEXT_PUBLIC_SITE_URL
-  - NEXT_PUBLIC_SITE_NAME
-- [x] Set up MongoDB connection
-- [x] Configure OpenRouter API integration
-- [x] Set up SEO components and metadata
+Pages principales réalisées :
+- HomePage
+- AboutPage
+- ContactPage
+- ServicesPage
+- ProjectsPage
+- BlogPage
+- SitemapPage
 
-## Phase 2: Static Pages 
-- [x] Homepage (/) - Design enhanced
-  - Company presentation
-  - Services overview
-  - Contact information
-  - Trust indicators
-  - Modern design elements
-- [x] About Us (/about)
-- [x] Contact (/contact)
-- [x] Services Overview (/services)
+Pages de services spécialisés réalisées :
+- HabitatRenovationPage
+- EnergyRenovationPage
+- WoodExtensionPage
+- BathroomRenovationPage
+- ApartmentRenovationPage
 
-## Phase 3: Dynamic Pages & SSR Implementation 
-### Location-Service Based Pages
-- [x] Create dynamic routes for Luxembourg quarters and services
-  - `/[quartier]/[service]` (e.g., `/bonnevoie/debouchage-canalisation`)
-  - MongoDB collections:
-    - Quarters list (Luxembourg neighborhoods)
-    - Services list (plumbing tasks)
-    - Generated content (cached responses)
-  - OpenRouter API integration:
-    - Generate location-specific service content
-    - Handle content regeneration triggers
-    - Implement content caching strategy
-  - SEO Optimizations:
-    - Dynamic metadata generation
-    - Structured data for local services
-    - Location-specific keywords
+Pages à réaliser :
 
-### Supporting Pages
-- [x] Create quartier index pages
-  - `/[quartier]` (lists all services available in the quarter)
-- [x] Create service index pages
-  - `/services` (overview of all plumbing services)
-  - Service categories and descriptions
+1. RÉNOVATION DE L'HABITAT (40 pages)
+   ├── 1.1 Rénovation de salles de bain
+   │   ├── Douche à l'italienne
+   │   ├── Baignoire
+   │   ├── Double vasque
+   │   ├── WC suspendus
+   │   ├── PMR / Accessibilité
+   │   └── Guide choix carrelage
+   │
+   ├── 1.2 Rénovation d'appartements
+   │   ├── Studio
+   │   ├── 2 chambres et plus
+   │   ├── Optimisation espace
+   │   ├── Rénovation complète
+   │   └── Mise aux normes
+   │
+   ├── 1.3 Cuisine
+   │   ├── Plan de travail
+   │   ├── Électroménager intégré
+   │   ├── Îlot central
+   │   ├── Rangements et placards
+   │   ├── Éclairage cuisine
+   │   ├── Plomberie cuisine
+   │   └── Revêtements et matériaux
+   │
+   ├── 1.4 Aménagement combles
+   │   ├── Types d'aménagement
+   │   ├── Fenêtres de toit
+   │   ├── Isolation thermique
+   │   ├── Plancher et structure
+   │   ├── Éclairage naturel
+   │   ├── Rangements sur mesure
+   │   └── Escalier d'accès
+   │
+   ├── 1.5 Rénovation maison
+   │   ├── Rénovation complète
+   │   ├── Rénovation par étapes
+   │   ├── Rénovation façade
+   │   ├── Cloisons et ouvertures
+   │   ├── Circuit électrique
+   │   ├── Plomberie générale
+   │   └── Plan de rénovation
+   │
+   └── 1.6 Isolation intérieure
+       ├── Murs intérieurs
+       ├── Combles perdus
+       ├── Plancher bas
+       ├── Cloisons isolantes
+       ├── Pont thermique
+       ├── Pare-vapeur
+       └── Solutions acoustiques
 
-## Phase 4: SEO & Performance 
-- [x] Implement French metadata for all pages
-- [x] Set up sitemap.xml generation
-- [x] Configure robots.txt
-- [x] Implement structured data (Schema.org)
-- [ ] Performance optimization (High Priority)
-  - [ ] Image optimization with next/image
-  - [x] Implement lazy loading for below-fold content
-  - [ ] Optimize Core Web Vitals
-    - [ ] Largest Contentful Paint (LCP)
-    - [ ] First Input Delay (FID)
-    - [ ] Cumulative Layout Shift (CLS)
-  - [ ] Implement caching strategies
-  - [ ] Optimize bundle size
+2. RÉNOVATION ÉNERGÉTIQUE (28 pages)
+   ├── 2.1 Chauffage
+   │   ├── Pompe à chaleur
+   │   ├── Chaudière condensation
+   │   ├── Chauffage au sol
+   │   ├── Radiateurs basse température
+   │   ├── Régulation thermique
+   │   ├── Thermostat intelligent
+   │   └── Bilan thermique
+   │
+   ├── 2.2 Isolation extérieure
+   │   ├── ITE par enduit
+   │   ├── ITE par bardage
+   │   ├── Matériaux isolants
+   │   ├── Mise en œuvre
+   │   ├── Points singuliers
+   │   ├── Performance thermique
+   │   └── Aides financières ITE
+   │
+   ├── 2.3 Ventilation
+   │   ├── VMC simple flux
+   │   ├── VMC double flux
+   │   ├── VMC hygroréglable
+   │   ├── Puits climatique
+   │   ├── Entretien VMC
+   │   ├── Qualité air intérieur
+   │   └── Dimensionnement
+   │
+   └── 2.4 Menuiseries
+       ├── Fenêtres double vitrage
+       ├── Fenêtres triple vitrage
+       ├── Portes isolantes
+       ├── Volets isolants
+       ├── Certification et labels
+       ├── Installation
+       └── Performances thermiques
 
-## Phase 5: Enhanced User Experience 
-- [ ] Add interactive features
-  - [ ] Service request form with validation
-  - [ ] Emergency service request button
-  - [ ] Live chat integration (optional)
-- [ ] Implement animations and transitions
-  - [ ] Page transitions using Framer Motion
-  - [ ] Micro-interactions for better engagement
-- [ ] Add testimonials section
-- [ ] Implement photo gallery of completed work
+3. EXTENSIONS BOIS (21 pages)
+   ├── 3.1 Types d'extensions
+   │   ├── Extension plain-pied
+   │   ├── Surélévation
+   │   ├── Extension étage
+   │   ├── Véranda bois
+   │   ├── Pergola bioclimatique
+   │   ├── Carport
+   │   └── Studio de jardin
+   │
+   ├── 3.2 Construction
+   │   ├── Fondations
+   │   ├── Ossature bois
+   │   ├── Charpente
+   │   ├── Couverture
+   │   ├── Bardage
+   │   ├── Menuiseries
+   │   └── Isolation
+   │
+   └── 3.3 Aspects techniques
+       ├── Étude de sol
+       ├── Permis de construire
+       ├── Raccordements
+       ├── Normes construction
+       ├── RT2012
+       ├── Garanties
+       └── Assurances
 
-## Phase 6: Quality Assurance & Launch Preparation
-- [ ] Testing (High Priority)
-  - [ ] Unit tests for critical components
-  - [ ] Integration tests for forms and API endpoints
-  - [ ] Cross-browser testing
-  - [ ] Mobile responsiveness verification
-  - [ ] Load testing
-- [ ] Security
-  - [ ] Security audit
-  - [ ] Implementation of security headers
-  - [ ] Form validation and sanitization
-  - [ ] Rate limiting for API routes
-- [ ] Launch preparation
-  - [ ] Domain configuration
-  - [ ] SSL setup
-  - [ ] Analytics integration
-  - [ ] Error tracking setup
+4. PAGES TRANSVERSALES
+   ├── 4.1 Démarches administratives
+   │   ├── Permis de construire
+   │   ├── Déclaration travaux
+   │   ├── Urbanisme
+   │   ├── Copropriété
+   │   ├── Assurances
+   │   └── Garanties
+   │
+   ├── 4.2 Financement
+   │   ├── Aides Luxembourg
+   │   ├── Primes énergie
+   │   ├── Prêts travaux
+   │   ├── Crédit d'impôt
+   │   ├── Subventions
+   │   └── Calcul budget
+   │
+   └── 4.3 Conseils et guides
+       ├── Choix entreprise
+       ├── Devis travaux
+       ├── Planning chantier
+       ├── Réception travaux
+       ├── Entretien
+       └── Maintenance
 
-## Phase 7: Post-Launch Optimization
-- [ ] Analytics & Monitoring
-  - [ ] Set up Google Analytics 4
-  - [ ] Implement error tracking
-  - [ ] Monitor Core Web Vitals
-  - [ ] Track user behavior
-- [ ] Content & SEO
-  - [ ] Regular content updates
-  - [ ] SEO performance monitoring
-  - [ ] Implement A/B testing
-- [ ] Performance optimization
-  - [ ] Regular performance audits
-  - [ ] Implementation of user feedback
-  - [ ] Continuous optimization based on analytics
+Prochaines étapes suggérées :
+1. Création des pages de sous-catégories pour la rénovation de l'habitat
+2. Création des pages de sous-catégories pour la rénovation énergétique
+3. Création des pages de sous-catégories pour les extensions bois
+4. Création des pages transversales
+5. Optimisation SEO pour toutes les pages
+6. Tests et déploiement
 
-## Technical Stack
-- Next.js 14 (App Router)
-- TypeScript
-- MongoDB
-- OpenRouter API
-- TailwindCSS
-- Framer Motion
-- Headless UI
+Un déploiement progressif
+La création de contenu qualitatif
+L'optimisation SEO page par page
+L'analyse des performances
+L'ajustement selon les retours utilisateurs
 
-## Dependencies
-- Next.js: 15.0.3
-- React: 18.2.0
-- MongoDB: 6.10.0
-- TailwindCSS: 3.4.15
-- TypeScript: 5.7.2
-- Framer Motion: 11.11.17
-
-## Notes
-- All content is in French
-- Focus on SEO optimization
-- Using SSR for dynamic pages
-- Content caching implementation
-- Mobile-first approach
-- Regular security updates
-- Performance monitoring
+use the same design and styling, You can reuse the same image in the entire project, or use Unplash real image ( no 404 ) 
+Optimise everypage for SEO Title , SEO meta, h1 h2 h3 h4, snippets, 
+Only in french

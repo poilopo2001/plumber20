@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Reremake
 
-## Getting Started
+Site web de rénovation d'habitat au Luxembourg. Développé avec React, TypeScript, et Tailwind CSS.
 
-First, run the development server:
+## Technologies Utilisées
+
+- React
+- TypeScript
+- Tailwind CSS
+- React Router
+- Framer Motion
+- React Helmet Async
+
+## Structure du Projet
+
+Le projet est organisé en sections principales :
+
+### Rénovation de l'Habitat
+- Salle de bain
+  - Douche à l'italienne
+  - Baignoire
+  - Double vasque
+  - WC suspendus
+  - PMR / Accessibilité
+  - Guide carrelage
+- Appartements
+- Cuisine
+- Aménagement combles
+- Rénovation maison
+- Isolation intérieure
+
+### Rénovation Énergétique
+- Chauffage
+- Isolation extérieure
+- Ventilation
+- Menuiseries
+
+### Extensions Bois
+- Types d'extensions
+- Construction
+- Aspects techniques
+
+## Installation
 
 ```bash
+# Cloner le projet
+git clone https://github.com/poilopo2001/Reremake.git
+
+# Installer les dépendances
+cd Reremake
+npm install
+
+# Lancer le serveur de développement
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts Disponibles
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `npm run dev` : Lance le serveur de développement
+- `npm run build` : Crée une version de production
+- `npm run preview` : Prévisualise la version de production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Caractéristiques
 
-## Learn More
+- Design moderne et responsive
+- Animations fluides avec Framer Motion
+- SEO optimisé avec React Helmet
+- Navigation avec React Router
+- Styling avec Tailwind CSS
 
-To learn more about Next.js, take a look at the following resources:
+## Structure des Fichiers
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+src/
+  ├── components/     # Composants réutilisables
+  ├── pages/         # Pages du site
+  │   └── services/  # Pages de services
+  ├── App.tsx        # Composant principal
+  └── main.tsx       # Point d'entrée
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contribution
 
-## Deploy on Vercel
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.

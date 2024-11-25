@@ -1,13 +1,24 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Allow: /
-Allow: /services/
-Allow: /contact
-Allow: /about
-Allow: /*/
+Disallow: /
 
-# Sitemaps
-Sitemap: https://plombierpro.lu/sitemap.xml
+# Prevent all search engines from indexing the site
+User-agent: *
+Noindex: /
+Nofollow: /
 
-# Crawl-delay
-Crawl-delay: 1
+# Specific directives for major search engines
+User-agent: Googlebot
+Disallow: /
+Noindex: /
+
+User-agent: Bingbot
+Disallow: /
+Noindex: /
+
+User-agent: Slurp
+Disallow: /
+Noindex: /
+
+User-agent: DuckDuckBot
+Disallow: /
+Noindex: /
