@@ -131,7 +131,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-reparation-urgente`,
           title: 'Réparation urgente',
           metadata: { 
-            description: 'Service de réparation d'urgence 24/7',
+            description: "Service de réparation d'urgence 24/7",
             category: 'Urgences'
           }
         },
