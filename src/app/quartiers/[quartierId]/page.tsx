@@ -123,7 +123,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-debouchage-urgent`,
           title: 'Débouchage urgent',
           metadata: { 
-            description: 'Débouchage en urgence de vos canalisations',
+            description: 'Débouchage en urgence de vos canalisations,',
             category: 'Urgences'
           }
         },
