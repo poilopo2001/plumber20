@@ -27,17 +27,70 @@ interface ServicesByCategory {
   [key: string]: Service[];
 }
 
+// List of valid quartier IDs
+const VALID_QUARTIERS = [
+  'muhlenbach',
+  'bonnevoie-nord',
+  'bonnevoie-sud',
+  'beggen',
+  'belair',
+  'cents',
+  'cessange',
+  'clausen',
+  'dommeldange',
+  'eich',
+  'gare',
+  'gasperich',
+  'grund',
+  'hamm',
+  'hollerich',
+  'kirchberg',
+  'limpertsberg',
+  'merl',
+  'neudorf',
+  'pfaffenthal'
+];
+
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { quartierId } = params;
   
+  // Format the quartier name for display
+  const formatQuartierName = (id: string) => {
+    return id.split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  // Clean URL formatting - remove spaces and special characters
+  const formatQuartierUrl = (id: string) => {
+    return id.toLowerCase()
+      .replace(/[%20\s]+/g, '-')  // Replace spaces and %20 with hyphens
+      .replace(/[,]/g, '')        // Remove commas
+      .replace(/[^a-z0-9-]/g, '') // Remove any other special characters
+      .replace(/-+/g, '-')        // Replace multiple hyphens with single hyphen
+      .replace(/^-|-$/g, '');     // Remove leading/trailing hyphens
+  };
+
+  const cleanUrl = formatQuartierUrl(quartierId);
+  
+  // Validate if it's a valid quartier
+  if (!VALID_QUARTIERS.includes(cleanUrl)) {
+    return {
+      title: 'Page Non Trouvée | Plombier Luxembourg',
+      description: 'La page que vous recherchez n\'existe pas. Découvrez nos services de plomberie dans tous les quartiers de Luxembourg.',
+    };
+  }
+
+  const quartierName = formatQuartierName(cleanUrl);
+  
   return {
-    title: `Services de Plomberie à ${quartierId} | Plombier Pro Luxembourg`,
-    description: `Découvrez nos services de plomberie professionnels à ${quartierId}, Luxembourg. Intervention rapide 24/7, devis gratuit.`,
-    keywords: ['plombier', quartierId, 'Luxembourg', 'services plomberie'],
+    title: `Plombier à ${quartierName} Luxembourg | Services & Dépannage 24/7`,
+    description: `Service de plomberie professionnel à ${quartierName}, Luxembourg. Intervention d'urgence 24/7, installation, réparation, débouchage. Devis gratuit et intervention rapide.`,
+    keywords: ['plombier', quartierName, 'Luxembourg', 'dépannage plomberie', 'urgence plombier', 'installation sanitaire'],
     openGraph: {
-      title: `Services de Plomberie à ${quartierId}`,
-      description: `Services de plomberie professionnels à ${quartierId}, Luxembourg`,
-      url: `${process.env.NEXT_PUBLIC_SITE_URL}/quartiers/${quartierId}`,
+      title: `Plombier Professionnel à ${quartierName} Luxembourg`,
+      description: `Service complet de plomberie à ${quartierName}: dépannage urgent, installation, réparation. Disponible 24/7.`,
+      url: `${process.env.NEXT_PUBLIC_SITE_URL}/quartiers/${cleanUrl}`,
       siteName: process.env.NEXT_PUBLIC_SITE_NAME,
       locale: 'fr_LU',
       type: 'website',
@@ -48,7 +101,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 async function getQuartierServices(quartierId: string): Promise<Service[]> {
   try {
     await connectDB();
-    
+
     const services = await Content.find({
       slug: { $regex: new RegExp(`^${quartierId}-`) },
       type: 'service'
@@ -60,9 +113,9 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
         // Urgences
         { 
           slug: `${quartierId}-fuite-eau`,
-          title: "Fuite d&apos;eau",
+          title: "Fuite d'eau",
           metadata: { 
-            description: "Service d&apos;urgence pour fuite d&apos;eau disponible 24/7",
+            description: "Service d'urgence pour fuite d'eau disponible 24/7",
             category: 'Urgences'
           }
         },
@@ -78,7 +131,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-reparation-urgente`,
           title: 'Réparation urgente',
           metadata: { 
-            description: 'Service de réparation d&apos;urgence 24/7',
+            description: 'Service de réparation d'urgence 24/7',
             category: 'Urgences'
           }
         },
@@ -136,7 +189,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-installation-evier`,
           title: 'Installation évier',
           metadata: { 
-            description: 'Installation d&apos;évier de cuisine ou salle de bain',
+            description: 'Installation d'évier de cuisine ou salle de bain',
             category: 'Installation'
           }
         },
@@ -168,7 +221,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-installation-ballon-eau-chaude`,
           title: 'Installation ballon eau chaude',
           metadata: { 
-            description: 'Installation de ballon d&apos;eau chaude',
+            description: 'Installation de ballon d'eau chaude',
             category: 'Installation'
           }
         },
@@ -200,15 +253,15 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-installation-adoucisseur`,
           title: 'Installation adoucisseur',
           metadata: { 
-            description: 'Installation d&apos;adoucisseur d&apos;eau',
+            description: 'Installation d'adoucisseur d'eau',
             category: 'Installation'
           }
         },
         { 
           slug: `${quartierId}-installation-compteur-eau`,
-          title: 'Installation compteur d&apos;eau',
+          title: 'Installation compteur d'eau',
           metadata: { 
-            description: 'Installation et remplacement de compteur d&apos;eau',
+            description: 'Installation et remplacement de compteur d'eau',
             category: 'Installation'
           }
         },
@@ -218,7 +271,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-reparation-fuite`,
           title: 'Réparation fuite',
           metadata: { 
-            description: 'Réparation de tout type de fuite d&apos;eau',
+            description: 'Réparation de tout type de fuite d'eau',
             category: 'Réparation'
           }
         },
@@ -266,7 +319,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-reparation-ballon-eau-chaude`,
           title: 'Réparation ballon eau chaude',
           metadata: { 
-            description: 'Réparation de ballon d&apos;eau chaude',
+            description: 'Réparation de ballon d'eau chaude',
             category: 'Réparation'
           }
         },
@@ -308,7 +361,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-debouchage-evier`,
           title: 'Débouchage évier',
           metadata: { 
-            description: 'Débouchage d&apos;évier et lavabo',
+            description: 'Débouchage d'évier et lavabo',
             category: 'Débouchage'
           }
         },
@@ -356,7 +409,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-debouchage-egout`,
           title: 'Débouchage égout',
           metadata: { 
-            description: 'Débouchage de canalisation d&apos;égout',
+            description: 'Débouchage de canalisation d'égout',
             category: 'Débouchage'
           }
         },
@@ -364,7 +417,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-debouchage-colonne`,
           title: 'Débouchage colonne',
           metadata: { 
-            description: 'Débouchage de colonne d&apos;immeuble',
+            description: 'Débouchage de colonne d'immeuble',
             category: 'Débouchage'
           }
         },
@@ -382,7 +435,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-detection-fuite`,
           title: 'Détection fuite',
           metadata: { 
-            description: 'Détection de fuite d&apos;eau non visible',
+            description: 'Détection de fuite d'eau non visible',
             category: 'Détection'
           }
         },
@@ -406,7 +459,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-detection-fuite-eau`,
           title: 'Détection fuite eau',
           metadata: { 
-            description: 'Localisation précise des fuites d&apos;eau',
+            description: 'Localisation précise des fuites d'eau',
             category: 'Détection'
           }
         },
@@ -472,7 +525,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-entretien-adoucisseur`,
           title: 'Entretien adoucisseur',
           metadata: { 
-            description: 'Entretien d&apos;adoucisseur d&apos;eau',
+            description: 'Entretien d'adoucisseur d'eau',
             category: 'Entretien'
           }
         },
@@ -498,6 +551,27 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
 
 export default async function QuartierPage({ params }: PageProps) {
   const { quartierId } = params;
+  const cleanUrl = quartierId.toLowerCase()
+    .replace(/[%20\s]+/g, '-')
+    .replace(/[,]/g, '')
+    .replace(/[^a-z0-9-]/g, '')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
+
+  // Redirect invalid quartier IDs
+  if (!VALID_QUARTIERS.includes(cleanUrl)) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">Page Non Trouvée</h1>
+          <p className="text-gray-600 mb-8">La page que vous recherchez n'existe pas.</p>
+          <Link href="/quartiers" className="text-blue-600 hover:text-blue-700">
+            Voir tous les quartiers →
+          </Link>
+        </div>
+      </div>
+    );
+  }
   
   try {
     const services = await getQuartierServices(quartierId);

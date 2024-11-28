@@ -1,10 +1,29 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
+
+# Allow main sections
 Allow: /
 Allow: /services/
 Allow: /contact
 Allow: /about
-Allow: /*/
+Allow: /quartiers/
+
+# Disallow invalid patterns
+Disallow: /*$
+Disallow: /%24
+Disallow: /%20
+Disallow: /quartiers/$
+Disallow: /quartiers/%24
+Disallow: /quartiers/%20
+Disallow: /quartiers/*/$ 
+Disallow: /services/$
+Disallow: /services/%24
+
+# Block specific patterns with special characters
+Disallow: /*%20et%20environs
+Disallow: /*%2C%20luxembourg
+Disallow: /*,%20*
+Disallow: /*%2C*
 
 # Sitemaps
 Sitemap: https://plombierpro.lu/sitemap.xml

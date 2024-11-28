@@ -29,10 +29,11 @@ async function getQuartiers(): Promise<Quartier[]> {
     
     if (!quartiersData || quartiersData.length === 0) {
       return [
-        { id: 'beggen', name: 'Beggen' },
-        { id: 'belair', name: 'Belair' },
+        { id: 'muhlenbach', name: 'Muhlenbach' },
         { id: 'bonnevoie-nord', name: 'Bonnevoie Nord' },
         { id: 'bonnevoie-sud', name: 'Bonnevoie Sud' },
+        { id: 'beggen', name: 'Beggen' },
+        { id: 'belair', name: 'Belair' },
         { id: 'cents', name: 'Cents' },
         { id: 'cessange', name: 'Cessange' },
         { id: 'clausen', name: 'Clausen' },
@@ -46,13 +47,8 @@ async function getQuartiers(): Promise<Quartier[]> {
         { id: 'kirchberg', name: 'Kirchberg' },
         { id: 'limpertsberg', name: 'Limpertsberg' },
         { id: 'merl', name: 'Merl' },
-        { id: 'muhlenbach', name: 'Muhlenbach' },
         { id: 'neudorf', name: 'Neudorf' },
-        { id: 'pfaffenthal', name: 'Pfaffenthal' },
-        { id: 'pulvermuhl', name: 'Pulvermuhl' },
-        { id: 'rollingergrund', name: 'Rollingergrund' },
-        { id: 'ville-haute', name: 'Ville Haute' },
-        { id: 'weimerskirch', name: 'Weimerskirch' }
+        { id: 'pfaffenthal', name: 'Pfaffenthal' }
       ];
     }
 
@@ -144,7 +140,7 @@ export default async function QuartiersPage() {
                     href={`/quartiers/${quartier.id}/fuite-eau`}
                     className="block text-blue-600 hover:text-blue-700"
                   >
-                    Fuite d&apos;Eau
+                    Fuite d'Eau
                   </Link>
                   <Link
                     href={`/quartiers/${quartier.id}/debouchage-canalisation`}
