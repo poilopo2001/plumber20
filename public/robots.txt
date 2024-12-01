@@ -8,25 +8,66 @@ Allow: /contact
 Allow: /about
 Allow: /quartiers/
 
-# Disallow invalid patterns
-Disallow: /*$
-Disallow: /%24
-Disallow: /%20
+# Block all invalid URL patterns in quartiers
+Disallow: /quartiers/*%*
+Disallow: /quartiers/*/
 Disallow: /quartiers/$
-Disallow: /quartiers/%24
-Disallow: /quartiers/%20
-Disallow: /quartiers/*/$ 
-Disallow: /services/$
-Disallow: /services/%24
+Disallow: /quartiers/*environs
+Disallow: /quartiers/*,*
+Disallow: /quartiers/*/luxembourg
+Disallow: /quartiers/*ville
+Disallow: /quartiers/*centre
+Disallow: /quartiers/*et*
+Disallow: /quartiers/*est*
+Disallow: /quartiers/*ouest*
 
-# Block specific patterns with special characters
-Disallow: /*%20et%20environs
-Disallow: /*%2C%20luxembourg
-Disallow: /*,%20*
-Disallow: /*%2C*
+# Block invalid service patterns
+Disallow: /services/*%*
+Disallow: /services/*/
+Disallow: /services/$
+Disallow: /services/*et*
+Disallow: /services/*,*
+
+# Block specific patterns
+Disallow: /*%24
+Disallow: /*%20
+Disallow: /*%2C
+Disallow: /*%2c
+Disallow: /*%25
+Disallow: /*%26
+Disallow: /*%27
+Disallow: /*%28
+Disallow: /*%29
+Disallow: /*%2B
+Disallow: /*%2b
+Disallow: /*%2F
+Disallow: /*%2f
+Disallow: /*%3A
+Disallow: /*%3a
+Disallow: /*%3B
+Disallow: /*%3b
+Disallow: /*%3D
+Disallow: /*%3d
+Disallow: /*%3F
+Disallow: /*%3f
+Disallow: /*%40
+Disallow: /*%5B
+Disallow: /*%5b
+Disallow: /*%5C
+Disallow: /*%5c
+Disallow: /*%5D
+Disallow: /*%5d
+Disallow: /*%7B
+Disallow: /*%7b
+Disallow: /*%7C
+Disallow: /*%7c
+Disallow: /*%7D
+Disallow: /*%7d
+Disallow: /*%E2%80%93
+Disallow: /*%E2%80%94
 
 # Sitemaps
-Sitemap: https://plombierpro.lu/sitemap.xml
+Sitemap: https://depannage-luxembourg.com/sitemap.xml
 
 # Crawl-delay
 Crawl-delay: 1
