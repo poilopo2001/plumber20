@@ -189,7 +189,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-installation-evier`,
           title: 'Installation évier',
           metadata: { 
-            description: 'Installation d'évier de cuisine ou salle de bain',
+            description: "Installation d'évier de cuisine ou salle de bain",
             category: 'Installation'
           }
         },
@@ -221,7 +221,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-installation-ballon-eau-chaude`,
           title: 'Installation ballon eau chaude',
           metadata: { 
-            description: 'Installation de ballon d'eau chaude',
+            description: "Installation de ballon d'eau chaude",
             category: 'Installation'
           }
         },
@@ -253,16 +253,15 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-installation-adoucisseur`,
           title: 'Installation adoucisseur',
           metadata: { 
-            description: 'Installation d'adoucisseur d'eau',
+            description: "Installation d'adoucisseur d'eau",
             category: 'Installation'
           }
         },
         { 
           slug: `${quartierId}-installation-compteur-eau`,
-          title: 'Installation compteur d'eau',
+          title: "Installation compteur d'eau",
           metadata: { 
-            description: 'Installation et remplacement de compteur d'eau',
-            category: 'Installation'
+            description: "Installation et remplacement de compteur d'eau",            category: 'Installation'
           }
         },
         
@@ -271,7 +270,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-reparation-fuite`,
           title: 'Réparation fuite',
           metadata: { 
-            description: 'Réparation de tout type de fuite d'eau',
+            description: "Réparation de tout type de fuite d'eau",
             category: 'Réparation'
           }
         },
@@ -319,7 +318,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-reparation-ballon-eau-chaude`,
           title: 'Réparation ballon eau chaude',
           metadata: { 
-            description: 'Réparation de ballon d'eau chaude',
+            description: "Réparation de ballon d'eau chaude",
             category: 'Réparation'
           }
         },
@@ -361,7 +360,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-debouchage-evier`,
           title: 'Débouchage évier',
           metadata: { 
-            description: 'Débouchage d'évier et lavabo',
+            description: "Débouchage d'évier et lavabo",
             category: 'Débouchage'
           }
         },
@@ -409,7 +408,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-debouchage-egout`,
           title: 'Débouchage égout',
           metadata: { 
-            description: 'Débouchage de canalisation d'égout',
+            description: "Débouchage de canalisation d'égout",
             category: 'Débouchage'
           }
         },
@@ -417,7 +416,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-debouchage-colonne`,
           title: 'Débouchage colonne',
           metadata: { 
-            description: 'Débouchage de colonne d'immeuble',
+            description: "Débouchage de colonne d'immeuble",
             category: 'Débouchage'
           }
         },
@@ -435,7 +434,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-detection-fuite`,
           title: 'Détection fuite',
           metadata: { 
-            description: 'Détection de fuite d'eau non visible',
+            description: "Détection de fuite d'eau non visible",
             category: 'Détection'
           }
         },
@@ -459,7 +458,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-detection-fuite-eau`,
           title: 'Détection fuite eau',
           metadata: { 
-            description: 'Localisation précise des fuites d'eau',
+            description: "Localisation précise des fuites d'eau",
             category: 'Détection'
           }
         },
@@ -525,7 +524,7 @@ async function getQuartierServices(quartierId: string): Promise<Service[]> {
           slug: `${quartierId}-entretien-adoucisseur`,
           title: 'Entretien adoucisseur',
           metadata: { 
-            description: 'Entretien d'adoucisseur d'eau',
+            description: "Entretien d'adoucisseur d'eau",
             category: 'Entretien'
           }
         },

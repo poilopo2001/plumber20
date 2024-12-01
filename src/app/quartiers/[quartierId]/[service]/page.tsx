@@ -27,61 +27,117 @@ export const dynamicParams = true;
 
 // List of valid services
 const VALID_SERVICES = [
-  'entretien-adoucisseur',
+  // Installation
+  'installation-chauffe-eau',
+  'installation-climatisation',
+  'installation-douche',
+  'installation-evier',
+  'installation-lavabo',
+  'installation-wc',
+  'installation-ballon-eau-chaude',
+  'installation-pompe-chaleur',
+  'installation-adoucisseur',
+  'installation-compteur-eau',
+  'installation-chauffage',
+  'installation-baignoire',
+  'installation-robinet',
+  'installation-lave-vaisselle',
+  'installation-lave-linge',
+  'installation-gaz',
+  'installation-chaudiere-gaz',
+  'installation-compteur-gaz',
+  'installation-cumulus',
+  
+  // Réparation
+  'reparation-fuite',
+  'reparation-chauffe-eau',
+  'reparation-wc',
+  'reparation-douche',
+  'reparation-baignoire',
+  'reparation-lavabo',
+  'reparation-robinet',
+  'reparation-ballon-eau-chaude',
+  'reparation-pompe-chaleur',
+  'reparation-canalisation',
+  'reparation-plomberie',
+  'reparation-sanitaire',
+  'reparation-siphon',
+  'reparation-vanne',
+  'reparation-cumulus',
+  'reparation-chauffage',
+  'reparation-climatisation',
+  'reparation-chaudiere-gaz',
+  'reparation-fuite-gaz',
+  'reparation-urgente',
+  
+  // Débouchage
+  'debouchage-wc',
+  'debouchage-evier',
+  'debouchage-douche',
+  'debouchage-baignoire',
+  'debouchage-lavabo',
+  'debouchage-toilette',
+  'debouchage-siphon',
+  'debouchage-canalisation',
+  'debouchage-egout',
+  'debouchage-colonne',
+  'debouchage-urgent',
+  
+  // Détection
+  'detection-fuite',
+  'detection-fuite-eau',
+  'detection-fuite-gaz',
+  'detection-canalisation',
+  'detection-fuite-canalisation',
+  
+  // Entretien
   'entretien-plomberie',
   'entretien-chauffe-eau',
   'entretien-chauffage',
   'entretien-climatisation',
   'entretien-canalisation',
   'entretien-pompe-chaleur',
-  'debouchage-wc',
-  'debouchage-evier',
-  'debouchage-douche',
-  'debouchage-baignoire',
-  'debouchage-lavabo',
-  'debouchage-canalisation',
-  'debouchage-urgent',
-  'debouchage-toilette',
-  'debouchage-egout',
-  'debouchage-colonne',
-  'debouchage-siphon',
+  'entretien-adoucisseur',
+  'entretien-chaudiere-gaz',
+  'entretien-cumulus',
+  
+  // Détartrage
+  'detartrage',
+  'detartrage-ballon-eau-chaude',
+  'detartrage-chauffe-eau',
+  'detartrage-cumulus',
+  'detartrage-robinet',
+  'detartrage-sanitaire',
+  'detartrage-canalisation',
+  
+  // Autres
   'fuite-eau',
-  'detection-fuite',
-  'detection-canalisation',
+  'fuite-gaz',
   'camera-inspection',
-  'detection-fuite-eau',
-  'detection-fuite-gaz',
-  'installation-chauffe-eau',
-  'installation-wc',
-  'installation-douche',
-  'installation-baignoire',
-  'installation-lavabo',
-  'installation-robinet',
-  'installation-evier',
-  'installation-lave-vaisselle',
-  'installation-lave-linge',
-  'installation-cumulus',
-  'installation-ballon-eau-chaude',
-  'installation-pompe-chaleur',
-  'installation-chauffage',
-  'installation-climatisation',
-  'installation-adoucisseur',
-  'installation-compteur-eau',
-  'reparation-fuite',
-  'reparation-chauffe-eau',
-  'reparation-wc',
-  'reparation-douche',
-  'reparation-robinet',
-  'reparation-cumulus',
-  'reparation-ballon-eau-chaude',
-  'reparation-pompe-chaleur',
-  'reparation-chauffage',
-  'reparation-climatisation',
-  'reparation-urgente'
+  'recherche-fuite'
 ];
 
 const VALID_QUARTIERS = [
-  // Add valid quartiers here
+  'muhlenbach',
+  'bonnevoie-nord',
+  'bonnevoie-sud',
+  'beggen',
+  'belair',
+  'cents',
+  'cessange',
+  'clausen',
+  'dommeldange',
+  'eich',
+  'gare',
+  'gasperich',
+  'grund',
+  'hamm',
+  'hollerich',
+  'kirchberg',
+  'limpertsberg',
+  'merl',
+  'neudorf',
+  'pfaffenthal'
 ];
 
 async function getOrCreatePermanentContent(quartier: string, service: string) {
@@ -127,47 +183,61 @@ async function getOrCreatePermanentContent(quartier: string, service: string) {
 }
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { quartierId, service } = params;
+export async function generateMetadata(
+  { params }: { params: { quartierId: string; service: string } }
+): Promise<Metadata> {
+  // Get and await the dynamic params
+  const quartierId = await params.quartierId;
+  const service = await params.service;
 
   // Clean and validate URLs
-  const cleanQuartierId = quartierId.toLowerCase()
-    .replace(/[%20\s]+/g, '-')
-    .replace(/[,]/g, '')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+  const cleanQuartierId = decodeURIComponent(quartierId)
+    .toLowerCase()
+    .replace(/\s+/g, '-')        // Replace any whitespace with single hyphen
+    .replace(/[^a-z0-9-]/g, '') // Remove any non-alphanumeric characters except hyphens
+    .replace(/-+/g, '-')        // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, '');     // Remove leading/trailing hyphens
 
-  const cleanService = service.toLowerCase()
-    .replace(/[%20\s]+/g, '-')
-    .replace(/[,]/g, '')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+  const cleanService = decodeURIComponent(service)
+    .toLowerCase()
+    .replace(/\s+/g, '-')        // Replace any whitespace with single hyphen
+    .replace(/[^a-z0-9-]/g, '') // Remove any non-alphanumeric characters except hyphens
+    .replace(/-+/g, '-')        // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, '');     // Remove leading/trailing hyphens
 
-  // Check if quartier and service are valid
+  // Format the quartier name for display
+  const formatQuartierName = (id: string) => {
+    return id.split('-')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
+  // Validate the service and quartier
   if (!VALID_QUARTIERS.includes(cleanQuartierId) || !VALID_SERVICES.includes(cleanService)) {
     return {
       title: 'Page Non Trouvée | Plombier Luxembourg',
-      description: 'La page que vous recherchez n\'existe pas. Découvrez nos services de plomberie dans tous les quartiers de Luxembourg.',
+      description: "La page que vous recherchez n'existe pas. Découvrez nos services de plomberie dans tous les quartiers de Luxembourg.",
     };
   }
 
-  const quartierName = cleanQuartierId.split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
+  // Get the service details
+  const pageContent = await getOrCreatePermanentContent(cleanQuartierId, cleanService);
+  if (!pageContent || !pageContent.metadata) {
+    return {
+      title: 'Page Non Trouvée | Plombier Luxembourg',
+      description: "La page que vous recherchez n'existe pas. Découvrez nos services de plomberie dans tous les quartiers de Luxembourg.",
+    };
+  }
 
-  const serviceName = cleanService.split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-
+  const quartierName = formatQuartierName(cleanQuartierId);
+  
   return {
-    title: `${serviceName} à ${quartierName} Luxembourg | Plombier Pro`,
-    description: `Service professionnel de ${serviceName.toLowerCase()} à ${quartierName}. Intervention rapide 24/7, devis gratuit. Plombiers expérimentés à votre service.`,
-    keywords: ['plombier', quartierName, serviceName, 'Luxembourg', 'dépannage plomberie'],
+    title: `${pageContent.metadata.title} à ${quartierName} Luxembourg | Plombier Professionnel`,
+    description: pageContent.metadata.description,
+    keywords: ['plombier', quartierName, 'Luxembourg', ...pageContent.metadata.keywords],
     openGraph: {
-      title: `${serviceName} à ${quartierName} Luxembourg`,
-      description: `Service professionnel de ${serviceName.toLowerCase()} à ${quartierName}. Disponible 24/7.`,
+      title: `${pageContent.metadata.title} - Service Professionnel à ${quartierName}`,
+      description: pageContent.metadata.description,
       url: `${process.env.NEXT_PUBLIC_SITE_URL}/quartiers/${cleanQuartierId}/${cleanService}`,
       siteName: process.env.NEXT_PUBLIC_SITE_NAME,
       locale: 'fr_LU',
@@ -180,19 +250,19 @@ export default async function ServicePage({ params }: PageProps) {
   const { quartierId, service } = params;
 
   // Clean and validate URLs
-  const cleanQuartierId = quartierId.toLowerCase()
-    .replace(/[%20\s]+/g, '-')
-    .replace(/[,]/g, '')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+  const cleanQuartierId = decodeURIComponent(quartierId)
+    .toLowerCase()
+    .replace(/\s+/g, '-')        // Replace any whitespace with single hyphen
+    .replace(/[^a-z0-9-]/g, '') // Remove any non-alphanumeric characters except hyphens
+    .replace(/-+/g, '-')        // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, '');     // Remove leading/trailing hyphens
 
-  const cleanService = service.toLowerCase()
-    .replace(/[%20\s]+/g, '-')
-    .replace(/[,]/g, '')
-    .replace(/[^a-z0-9-]/g, '')
-    .replace(/-+/g, '-')
-    .replace(/^-|-$/g, '');
+  const cleanService = decodeURIComponent(service)
+    .toLowerCase()
+    .replace(/\s+/g, '-')        // Replace any whitespace with single hyphen
+    .replace(/[^a-z0-9-]/g, '') // Remove any non-alphanumeric characters except hyphens
+    .replace(/-+/g, '-')        // Replace multiple hyphens with single hyphen
+    .replace(/^-|-$/g, '');     // Remove leading/trailing hyphens
 
   // Handle invalid URLs
   if (!VALID_QUARTIERS.includes(cleanQuartierId) || !VALID_SERVICES.includes(cleanService)) {

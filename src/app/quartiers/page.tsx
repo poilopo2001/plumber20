@@ -89,7 +89,7 @@ export default async function QuartiersPage() {
                   Appeler Maintenant
                 </Link>
                 <Link
-                  href="/contact"
+                  href="/devis"
                   className="bg-blue-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-400 transition-colors"
                 >
                   Devis Gratuit
@@ -159,6 +159,12 @@ export default async function QuartiersPage() {
                     className="block text-blue-600 hover:text-blue-700"
                   >
                     Remplacement Chauffe-eau
+                  </Link>
+                  <Link
+                    href={`/quartiers/${quartier.id}/debouchage-urgent#quick-fix`}
+                    className="block text-blue-600 hover:text-blue-700"
+                  >
+                    Guide Réparation
                   </Link>
                   <Link
                     href={`/quartiers/${quartier.id}`}
